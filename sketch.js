@@ -89,12 +89,12 @@ function draw() {
 
     kangaroo.collide(invisibleGround);
     //escreva uma condição para que o estado do jogo mude para end (fim).
-    if(){
+    if(kangaroo.isTouching(obstaclesGroup)){
       collidedSound.play();
       gameState = END;
     }
     //escreva uma condição para a pontuação aumentar
-    if(){
+    if(kangaroo.isTouching(shrubsGroup)){
       score = score + 1;
       shrubsGroup.destroyEach();
     }
@@ -199,7 +199,10 @@ function reset(){
   restart.visible = false;
   kangaroo.visible = true;
   //mude a animação canguru
+  kangaroo.changeAnimation("collided");
   //destrua os arbustos e o grupo de obstáculos
+  obstaclesGroup.destroyEach();
+  shrubsGroup.destroyEach();
   
   score = 0;
 }
